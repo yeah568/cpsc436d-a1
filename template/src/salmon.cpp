@@ -139,6 +139,7 @@ void Salmon::draw(const mat3& projection)
 	// transform_translate({ 100.f, 100.f });
 	vec2 offset = { m_position.x, m_position.y };
 	transform_translate(offset);
+	transform_rotate(m_rotation);
 	transform_scale(m_scale);
 	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -182,7 +183,7 @@ void Salmon::draw(const mat3& projection)
 	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	// HERE TO SET THE CORRECTLY LIGHT UP THE SALMON IF HE HAS EATEN RECENTLY
 	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-	int light_up = 0;
+	int light_up = (m_light_up_countdown_ms > 0.f) ? 1 : 0;
 	glUniform1iv(light_up_uloc, 1, &light_up);
 
 

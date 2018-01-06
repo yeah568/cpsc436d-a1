@@ -348,22 +348,22 @@ void World::on_key(GLFWwindow*, int key, int, int action, int mod)
 		switch (key) {
 		case GLFW_KEY_UP:
 			fprintf(stdout, "keypress up\n");
-			offset = { (float)0, (float)-5 };
+			offset = { (float)0, (float)-10 };
 			m_salmon.move(offset);
 			break;
 		case GLFW_KEY_DOWN:
 			fprintf(stdout, "keypress down\n");
-			offset = { (float)0, (float)5 };
+			offset = { (float)0, (float)10 };
 			m_salmon.move(offset);
 			break;
 		case GLFW_KEY_LEFT:
 			fprintf(stdout, "keypress left\n");
-			offset = { (float)-5, (float)0 };
+			offset = { (float)-10, (float)0 };
 			m_salmon.move(offset);
 			break;
 		case GLFW_KEY_RIGHT:
 			fprintf(stdout, "keypress right\n");
-			offset = { (float)5, (float)0 };
+			offset = { (float)10, (float)0 };
 			m_salmon.move(offset);
 			break;
 		}
@@ -378,5 +378,11 @@ void World::on_mouse_move(GLFWwindow* window, double xpos, double ypos)
 	// default facing direction is (1, 0)
 	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
+	vec2 salmon_pos = m_salmon.get_position();
+
+	float angle = atan2(ypos - salmon_pos.y, xpos - salmon_pos.x);
+
+	fprintf(stdout, "mousemove angle %f", angle);
+	m_salmon.set_rotation(angle);
 
 }
