@@ -177,7 +177,13 @@ void Salmon::draw(const mat3& projection)
 
 	// !!! Salmon Color
 	float color[] = { 1.f, 1.f, 1.f };
-	glUniform3fv(color_uloc, 1, color);
+	float dead_color[] = { 1.f, 0.f, 0.f };
+	if (m_is_alive) {
+		glUniform3fv(color_uloc, 1, color);
+	}
+	else {
+		glUniform3fv(color_uloc, 1, dead_color);
+	}
 	glUniformMatrix3fv(projection_uloc, 1, GL_FALSE, (float*)&projection);
 
 	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
