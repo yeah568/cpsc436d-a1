@@ -136,7 +136,9 @@ void Salmon::draw(const mat3& projection)
 
 	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 	// REMOVE THE FOLLOWING LINES BEFORE ADDING ANY TRANSFORMATION CODE
-	transform_translate({ 100.f, 100.f });
+	// transform_translate({ 100.f, 100.f });
+	vec2 offset = { m_position.x, m_position.y };
+	transform_translate(offset);
 	transform_scale(m_scale);
 	// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

@@ -342,6 +342,32 @@ void World::on_key(GLFWwindow*, int key, int, int action, int mod)
 		m_current_speed += 0.1f;
 	
 	m_current_speed = fmax(0.f, m_current_speed);
+
+	if (action == GLFW_REPEAT || action == GLFW_PRESS) {
+		vec2 offset;
+		switch (key) {
+		case GLFW_KEY_UP:
+			fprintf(stdout, "keypress up\n");
+			offset = { (float)0, (float)-5 };
+			m_salmon.move(offset);
+			break;
+		case GLFW_KEY_DOWN:
+			fprintf(stdout, "keypress down\n");
+			offset = { (float)0, (float)5 };
+			m_salmon.move(offset);
+			break;
+		case GLFW_KEY_LEFT:
+			fprintf(stdout, "keypress left\n");
+			offset = { (float)-5, (float)0 };
+			m_salmon.move(offset);
+			break;
+		case GLFW_KEY_RIGHT:
+			fprintf(stdout, "keypress right\n");
+			offset = { (float)5, (float)0 };
+			m_salmon.move(offset);
+			break;
+		}
+	}	
 }
 
 void World::on_mouse_move(GLFWwindow* window, double xpos, double ypos)
